@@ -1,7 +1,7 @@
 # Django_ChatApp_websocket
 Created a django chat app using web sockets.
 
-#Steps to follow
+# Steps to follow
  - git clone https://github.com/itssunny322/Django_ChatApp_websocket.git
  - cd Django_chatApp_websocket
  - pip3 install -r requirements.txt
@@ -11,12 +11,12 @@ Created a django chat app using web sockets.
  - Select the user from list 
  - Start texting
 
-#Languages and frameworks
+# Languages and frameworks
  - Python
  - Django, DRF
  - HTML, CSS, JS
 
-#Tool
+# Tool
  - pycharm or vscode
 
 
