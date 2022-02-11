@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="chatsss p-4 mx-auto" style="width: 380px; position: absolute;
+top:0;
+bottom: 0;
+left: 0;
+right: 0;
+height:300px;
+margin: auto;">
+    {% if user.is_authenticated %}
+    <p class="mt-5">You are already logged in</p>
+    <p>Redirecting you to your profile page</p>
+    <button id="lol" class="btn btn-primary px-5 text-light" style="width:320px; border-radius: 2px;"><a href="/home/"> click here if not redirectted</a></button> 
+    <script>document.getElementById('lol').click();</script>
+{% else %}
+<h2 class="mb-4">Login</h2>
+    <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+            <p class="mb-3">
+              {{ field.label_tag }}<br>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey; display: block">{{ field.help_text|safe }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+    <button type="submit" class="btn btn-primary px-5" style="width:320px; border-radius: 2px;" value="Login">Login</button>
+    </form>
+    {% endif %}
+</div>
+<style>
+</style>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% block title%}Add User{% endblock %}
+{% block style%}
+<style>
+    h2 {
+        font-size: 20px;
+    }
+</style>
+
+
+{% endblock style%}
+
+<script>
+    // Correctly decide between ws:// and wss://
+    var ws_scheme = 'ws://'
+    if (window.location.protocol === 'https:'){
+            ws_scheme = 'wss://'
+    }
+
+    let chatSocket = new WebSocket(ws_scheme + window.location.host + '/ws/consumer/');
+
+
+
+    chatSocket.onopen = function () {
+        console.log('connected');
+    }
+
+
+
+
+
+    chatSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly', e);
+    };
+
+
+
+</script>
+
+
+
+
+{% block content %}
+
+<div class="row" style="background-color: white">
+    <div class="col-lg-12" style="margin-bottom:20px">
+
+        <div style="margin-left: 10px;">
+            <h2>Add the User</h2>
+
+        </div>
+        <hr size="30">
+        <div class="row">
+            <div class="col-md-5">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div style="margin-left: 10px;">
+                        <div class="col">
+                            {{leave_type_form}}
+
+                        </div>
+
+                        <br />
+
+                        <br />
+                        <div class="form-group  row" style="margin-left: 10px;">
+                            <input type="submit" class="btn btn-primary " name="submit" value="submit">
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

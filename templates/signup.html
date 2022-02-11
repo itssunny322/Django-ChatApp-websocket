@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="chatsss">
+
+{% if user.is_authenticated %}
+<div class="p-5 m-5">
+    <p class="">You are already logged in</p>
+    <p>Redirecting you to your profile page</p>
+    <button id="lol" class="btn btn-primary px-5 text-light" style="width:280px; border-radius: 2px;"><a href="/home/" class="text-light"> click here if not redirectted</a></button></div> 
+    <script>document.getElementById('lol').click();</script>
+{% else %}
+  <div class="row">
+      <div class="col-md-6">
+        <img src="http://backgroundcheckall.com/wp-content/uploads/2017/12/vintage-white-wood-background-7.jpg" style="width: 100%; height: 100%;"/>
+      </div>
+      <div class="col-md-6 p-3">
+        <form method="post">
+        <h2>Sign up</h2>
+        {% csrf_token %}
+          {% for field in form %}
+            <p class="mb-3">
+              {{ field.label_tag }}<br>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey; display: block">{{ field.help_text|safe }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary px-5" style="width:280px; border-radius: 2px;">Sign up</button>
+        </form>
+          <h5>OR</h5>
+          <button type="submit" class="btn btn-primary px-5" style="width:280px; border-radius: 2px;"><a href=" {% url 'login' %} " class="text-light">Login</a></button>
+
+      {% endif %}
+      </div>
+    </div>
+   </div>
+<style>
+
+</style>
+{% endblock %}
