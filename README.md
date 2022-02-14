@@ -1,5 +1,6 @@
 # Django_ChatApp_websocket
-Created a django chat app using web sockets.
+Created a django chat app using websockets,django-channels.
+You can read more about it from here https://channels.readthedocs.io/en/stable/
 
 # Steps to follow
  - git clone https://github.com/itssunny322/Django_ChatApp_websocket.git
